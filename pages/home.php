@@ -10,8 +10,11 @@ $products = $productsData['products'] ?? [];
 $hero = get_drive_media_by_filename('image15.jpeg') ?? get_drive_media_by_filename('image0.jpeg');
 $heroUrl = $hero['url'] ?? '';
 
-// Imaginea pentru secțiunea "Produs" (partea din dreapta) - URL direct din Drive (din cererea ta).
-$featureUrl = 'https://drive.google.com/uc?export=view&id=1m9HCK3ujF0AK96TtkpL7p7bspEspB7o6';
+// Imaginea pentru secțiunea "Produs" (partea din dreapta) - fișier local din assets.
+$featureUrl = 'assets/image14.jpeg';
+if (!is_file(__DIR__ . '/../assets/image14.jpeg')) {
+    $featureUrl = $heroUrl; // fallback dacă nu există imaginea locală
+}
 
 function drive_url_for(string $filename): string
 {
