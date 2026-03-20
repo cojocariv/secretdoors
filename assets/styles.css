@@ -1,0 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.shadow-soft {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lightbox */
+.lb-backdrop {
+  background: rgba(0,0,0,0.72);
+}
+
+/* Mobile menu lines animation */
+[data-mobile-nav-line-1],
+[data-mobile-nav-line-2] {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
