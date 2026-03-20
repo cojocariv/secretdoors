@@ -21,16 +21,49 @@ function get_drive_cache_path(): string
 
 function drive_parse_filenames(string $html): array
 {
-    preg_match_all('/(image\\d+\\.(?:jpeg|jpg|png|webp|gif))/i', $html, $m);
-    $names = array_values(array_unique($m[1] ?? []));
+    // Suportă atât imageX.jpeg, cât și IMG_XXXX.JPG / alte denumiri standard.
+    preg_match_all('/([A-Za-z0-9_-]+\\.(?:jpeg|jpg|png|webp|gif))/i', $html, $m);
+    $all = $m[1] ?? [];
+    $seen = [];
+    $names = [];
+
+    foreach ($all as $filename) {
+        $name = trim((string)$filename);
+        if ($name === '') {
+            continue;
+        }
+
+        // Păstrăm doar fișiere foto utile din folderul partajat.
+        if (!preg_match('/^(image\\d+|IMG_\\d+|Image[A-Za-z0-9_-]*)\\.(?:jpeg|jpg|png|webp|gif)$/i', $name)) {
+            continue;
+        }
+
+        $key = strtolower($name);
+        if (isset($seen[$key])) {
+            continue;
+        }
+        $seen[$key] = true;
+        $names[] = $name;
+    }
+
     usort($names, function (string $a, string $b) {
-        preg_match('/image(\\d+)/i', $a, $ma);
-        preg_match('/image(\\d+)/i', $b, $mb);
-        $ia = isset($ma[1]) ? (int)$ma[1] : 0;
-        $ib = isset($mb[1]) ? (int)$mb[1] : 0;
-        return $ia <=> $ib;
+        $sa = drive_sort_key_for_filename($a);
+        $sb = drive_sort_key_for_filename($b);
+        return $sa <=> $sb;
     });
+
     return $names;
+}
+
+function drive_sort_key_for_filename(string $filename): int
+{
+    if (preg_match('/^image(\\d+)\\./i', $filename, $m)) {
+        return (int)$m[1];
+    }
+    if (preg_match('/^IMG_(\\d+)\\./i', $filename, $m)) {
+        return 100000 + (int)$m[1];
+    }
+    return 200000;
 }
 
 function drive_extract_id_near_filename(string $html, string $filename): ?string
@@ -64,6 +97,7 @@ function drive_extract_id_near_filename(string $html, string $filename): ?string
 function get_drive_media_items(bool $forceRefresh = false): array
 {
     global $config;
+    $cacheVersion = 2;
 
     ensure_storage_dir_exists();
     $cachePath = get_drive_cache_path();
@@ -73,7 +107,13 @@ function get_drive_media_items(bool $forceRefresh = false): array
         $raw = @file_get_contents($cachePath);
         if (is_string($raw) && $raw !== '') {
             $cached = json_decode($raw, true);
-            if (is_array($cached) && !empty($cached['fetched_at']) && time() - (int)$cached['fetched_at'] < $ttl) {
+            $cachedVersion = (int)($cached['version'] ?? 1);
+            if (
+                is_array($cached) &&
+                $cachedVersion === $cacheVersion &&
+                !empty($cached['fetched_at']) &&
+                time() - (int)$cached['fetched_at'] < $ttl
+            ) {
                 return (array)($cached['items'] ?? []);
             }
         }
@@ -99,7 +139,7 @@ function get_drive_media_items(bool $forceRefresh = false): array
             continue;
         }
 
-        $index = 0;
+        $index = drive_sort_key_for_filename($filename);
         preg_match('/image(\\d+)/i', $filename, $mIndex);
         if (!empty($mIndex[1])) {
             $index = (int)$mIndex[1];
@@ -116,6 +156,7 @@ function get_drive_media_items(bool $forceRefresh = false): array
     usort($items, fn($a, $b) => ($a['index'] ?? 0) <=> ($b['index'] ?? 0));
 
     $payload = [
+        'version' => $cacheVersion,
         'fetched_at' => time(),
         'items' => $items,
     ];

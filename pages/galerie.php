@@ -4,7 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../components/media.php';
 
 $items = get_drive_media_items();
-$items = array_slice($items, 0, 26);
+$items = array_slice($items, 0, 48);
 
 function cat_for_index(int $index): string
 {
