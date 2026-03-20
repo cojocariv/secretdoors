@@ -35,10 +35,12 @@ declare(strict_types=1);
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'Poppins', 'ui-sans-serif', 'system-ui']
+            // Use Poppins as primary to match the visual language.
+            sans: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui']
           },
           boxShadow: {
-            soft: '0 12px 30px rgba(0,0,0,0.18)',
+            // Keep in sync with `.shadow-soft` from `assets/styles.css`.
+            soft: '0 14px 34px rgba(0,0,0,0.12)',
           },
         }
       }

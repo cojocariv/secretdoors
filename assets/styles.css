@@ -1,9 +1,62 @@
+/* Design tokens (used by CSS classes; Tailwind handles most styling). */
+:root {
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.12);
+  --shadow-float: 0 18px 44px rgba(0, 0, 0, 0.16);
+  --border-soft: rgba(0, 0, 0, 0.05);
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 .shadow-soft {
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Reusable controls (optional to use in later milestones). */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-2xl);
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.btn-primary:hover {
+  background: #000;
+  color: #fff;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-2xl);
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #000;
 }
 
 /* Reveal on scroll */

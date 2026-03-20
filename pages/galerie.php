@@ -96,6 +96,14 @@ function cat_for_index(int $index): string
       });
     }
 
+    // Apply initial active filter (the HTML marks the default with data-gallery-filter-active="true").
+    const initialBtn = filterButtons.find(b => b.getAttribute('data-gallery-filter-active') === 'true') || filterButtons[0];
+    if (initialBtn) {
+      const initialCat = initialBtn.getAttribute('data-gallery-filter') || 'Toate';
+      setActive(initialBtn);
+      applyFilter(initialCat);
+    }
+
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const cat = btn.getAttribute('data-gallery-filter') || 'Toate';

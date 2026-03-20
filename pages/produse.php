@@ -64,7 +64,7 @@ function url_for(string $filename): string
               <?php else: ?>
                 <div class="w-full h-[200px] bg-gradient-to-br from-gray-900 via-black to-gray-700"></div>
               <?php endif; ?>
-              <div class="absolute top-4 left-4 rounded-full bg-white/85 backdrop-blur px-3 py-1 text-xs font-semibold text-black/80">
+              <div class="absolute top-4 left-4 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-black/80">
                 <?= h($p['collection'] ?? '') ?>
               </div>
             </div>
@@ -105,7 +105,7 @@ function url_for(string $filename): string
             <?php else: ?>
               <div class="w-full h-[220px] bg-gradient-to-br from-gray-900 via-black to-gray-700"></div>
             <?php endif; ?>
-            <div class="absolute top-4 left-4 rounded-full bg-white/85 backdrop-blur px-3 py-1 text-xs font-semibold text-black/80">
+            <div class="absolute top-4 left-4 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-xs font-semibold text-black/80">
               <?= h($p['collection'] ?? '') ?>
             </div>
           </div>

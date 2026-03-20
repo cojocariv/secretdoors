@@ -257,7 +257,7 @@ function drive_url_for(string $filename): string
       ];
       ?>
       <?php foreach ($testimonials as $t): ?>
-        <div class="rounded-3xl border border-black/5 bg-white p-6 hover:border-black/15 transition-colors reveal" data-reveal>
+        <div class="rounded-3xl border border-black/5 bg-white p-6 hover:border-black/15 transition-colors" data-reveal>
           <div class="flex items-center justify-between">
             <p class="font-semibold"><?= h($t['name']) ?></p>
             <span class="text-sm text-black/40">★★★★★</span>
