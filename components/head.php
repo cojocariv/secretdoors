@@ -6,6 +6,8 @@ declare(strict_types=1);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/assets/logo.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
   <?php if (!empty($seo['title'])): ?>
     <title><?= h($seo['title']) ?></title>
   <?php else: ?>

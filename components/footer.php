@@ -7,7 +7,9 @@ declare(strict_types=1);
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
         <div class="flex items-center gap-3">
-          <span class="w-10 h-10 rounded-xl bg-black text-white grid place-items-center text-sm font-semibold">SD</span>
+          <span class="w-10 h-10 rounded-xl bg-black overflow-hidden grid place-items-center">
+            <img src="/assets/logo.png" alt="Secret Doors" class="w-full h-full object-cover" loading="lazy" />
+          </span>
           <div>
             <p class="font-semibold text-lg leading-tight"><?= h($config['site_name'] ?? 'Secret Doors') ?></p>
             <p class="text-sm text-black/60">Uși ascunse tip filomuro</p>

@@ -6,8 +6,8 @@ declare(strict_types=1);
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between py-3">
       <a href="/" class="group inline-flex items-center gap-3">
-        <span class="w-9 h-9 rounded-xl bg-black text-white grid place-items-center text-sm font-semibold group-hover:rotate-[-6deg] transition-transform">
-          SD
+        <span class="w-9 h-9 rounded-xl bg-black overflow-hidden grid place-items-center group-hover:rotate-[-6deg] transition-transform">
+          <img src="/assets/logo.png" alt="Secret Doors" class="w-full h-full object-cover" loading="eager" />
         </span>
         <span class="font-semibold text-base sm:text-lg tracking-tight">
           Secret Doors
