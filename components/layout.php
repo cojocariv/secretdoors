@@ -11,6 +11,15 @@ $page_view = $page_view ?? '';
 
 $contact = get_contact_data();
 $whatsapp_url = $contact['whatsapp_url'] ?? '';
+
+$assetVer = time();
+$cssFile = __DIR__ . '/../assets/styles.css';
+if (is_file($cssFile)) {
+    $mtime = @filemtime($cssFile);
+    if (is_int($mtime) && $mtime > 0) {
+        $assetVer = $mtime;
+    }
+}
 ?>
 
 <?php
@@ -50,7 +59,7 @@ require __DIR__ . '/navbar.php';
   </a>
 <?php endif; ?>
 
-<script src="/assets/app.js" defer></script>
+<script src="assets/app.js?v=<?= h((string)$assetVer) ?>" defer></script>
 </body>
 </html>
 

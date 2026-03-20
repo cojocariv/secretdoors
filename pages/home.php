@@ -10,6 +10,9 @@ $products = $productsData['products'] ?? [];
 $hero = get_drive_media_by_filename('image15.jpeg') ?? get_drive_media_by_filename('image0.jpeg');
 $heroUrl = $hero['url'] ?? '';
 
+// Imaginea pentru secțiunea "Produs" (partea din dreapta) - URL direct din Drive (din cererea ta).
+$featureUrl = 'https://drive.google.com/uc?export=view&id=1m9HCK3ujF0AK96TtkpL7p7bspEspB7o6';
+
 function drive_url_for(string $filename): string
 {
     $it = get_drive_media_by_filename($filename);
@@ -41,10 +44,10 @@ function drive_url_for(string $filename): string
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="/contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-white text-black font-semibold shadow-soft hover:bg-black hover:text-white transition-colors">
+        <a href="contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-white text-black font-semibold shadow-soft hover:bg-black hover:text-white transition-colors">
           Solicită ofertă
         </a>
-        <a href="/produse.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-white/30 bg-white/5 text-white font-semibold hover:bg-white/10 transition-colors">
+        <a href="produse.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-white/30 bg-white/5 text-white font-semibold hover:bg-white/10 transition-colors">
           Vezi produse
         </a>
       </div>
@@ -103,8 +106,8 @@ function drive_url_for(string $filename): string
     </div>
 
     <div data-reveal class="rounded-3xl border border-black/5 overflow-hidden shadow-soft">
-      <?php if ($heroUrl): ?>
-        <img src="<?= h($heroUrl) ?>" alt="Detaliu uși filomuro" class="w-full h-[420px] object-cover" loading="lazy" />
+      <?php if ($featureUrl): ?>
+        <img src="<?= h($featureUrl) ?>" alt="Detaliu uși filomuro" class="w-full h-[420px] object-cover" loading="lazy" />
       <?php else: ?>
         <div class="w-full h-[420px] bg-gradient-to-br from-black via-black/60 to-gray-900"></div>
       <?php endif; ?>
@@ -165,7 +168,7 @@ function drive_url_for(string $filename): string
             <div class="p-5">
               <p class="font-semibold text-lg"><?= h($c['title'] ?? '') ?></p>
               <p class="text-sm text-white/70 mt-2"><?= h($c['subtitle'] ?? '') ?></p>
-              <a href="/produse.php" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold hover:text-white/90 transition-colors">
+              <a href="produse.php" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold hover:text-white/90 transition-colors">
                 Vezi detalii
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -212,7 +215,7 @@ function drive_url_for(string $filename): string
       <p class="mt-4 text-black/70 leading-relaxed">
         Spune-ne dimensiunile și preferințele. Noi pregătim specificațiile și pașii de implementare.
       </p>
-      <a href="/contact.php" class="mt-8 inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
+      <a href="contact.php" class="mt-8 inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
         Solicită ofertă
       </a>
       <p class="mt-3 text-sm text-black/50">Răspundem rapid cu claritate și recomandări.</p>

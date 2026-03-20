@@ -27,10 +27,10 @@ $img1Url = $img1['url'] ?? '';
         </div>
       </div>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="/produse.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
+        <a href="produse.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
           Vezi produse
         </a>
-        <a href="/contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-black/10 bg-white text-black font-semibold hover:border-black/20 transition-colors">
+        <a href="contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-black/10 bg-white text-black font-semibold hover:border-black/20 transition-colors">
           Solicită ofertă
         </a>
       </div>

@@ -6,8 +6,8 @@ declare(strict_types=1);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/assets/logo.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="/assets/logo.png" />
+  <link rel="icon" href="assets/logo.png?v=<?= h((string)($assetVer ?? time())) ?>" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/logo.png?v=<?= h((string)($assetVer ?? time())) ?>" />
   <?php if (!empty($seo['title'])): ?>
     <title><?= h($seo['title']) ?></title>
   <?php else: ?>
@@ -45,7 +45,7 @@ declare(strict_types=1);
     }
   </script>
 
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=<?= h((string)($assetVer ?? time())) ?>" />
 </head>
 <body class="bg-white text-black antialiased selection:bg-black selection:text-white">
 

@@ -121,7 +121,7 @@ $mapsUrl = maps_embed_url($companyAddress);
         </div>
       <?php endif; ?>
 
-      <form method="post" action="/contact.php" class="mt-8 rounded-3xl border border-black/5 bg-white p-6 shadow-soft reveal" data-reveal>
+      <form method="post" action="contact.php" class="mt-8 rounded-3xl border border-black/5 bg-white p-6 shadow-soft reveal" data-reveal>
         <input type="hidden" name="product" value="<?= h($prefProduct) ?>" />
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="sm:col-span-1">

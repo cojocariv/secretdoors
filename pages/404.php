@@ -10,10 +10,10 @@ declare(strict_types=1);
       Ne pare rău. Pagina cerută nu există sau a fost mutată.
     </p>
     <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-      <a href="/" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
+      <a href="index.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 bg-black text-white font-semibold hover:bg-black/90 transition-colors shadow-soft">
         Înapoi la Home
       </a>
-      <a href="/contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-black/10 bg-white text-black font-semibold hover:border-black/20 transition-colors">
+      <a href="contact.php" class="inline-flex items-center justify-center rounded-2xl px-7 py-3 border border-black/10 bg-white text-black font-semibold hover:border-black/20 transition-colors">
         Cere ofertă
       </a>
     </div>
